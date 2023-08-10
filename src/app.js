@@ -20,4 +20,8 @@ app.get('/strings/upper/:string', (req, res) => {
   res.status(200).json({ result: `${uppercase(req.params.string)}` });
 });
 
+app.get('/strings/lower/:string', (req, res) => {
+  res.status(200).json({ result: `${lowercase(req.params.string)}` });
+});
+
 module.exports = app;
