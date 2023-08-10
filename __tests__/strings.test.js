@@ -56,6 +56,28 @@ describe('/strings', () => {
     });
   });
 
+  describe('GET /count-characters/{string}', () => {
+    it('returns the length of characters of the string', done => {
+      request(app)
+        .get('/strings/count-characters/hello')
+        .then(res => {
+          expect(res.status).toEqual(200);
+          expect(res.body).toEqual({ result: '5' });
+          done();
+        });
+    });
+
+    it('returns the length of characters of the string', done => {
+      request(app)
+        .get('/strings/count-characters/turtle')
+        .then(res => {
+          expect(res.status).toEqual(200);
+          expect(res.body).toEqual({ result: '6' });
+          done();
+        });
+    });
+  });
+
   describe('GET /first-characters/{string}', () => {
     it('returns the first character of the string when there is no query string', done => {
       request(app)
