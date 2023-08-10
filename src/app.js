@@ -29,7 +29,11 @@ app.get('/strings/count-characters/:string', (req, res) => {
 });
 
 app.get('/strings/first-characters/:string', (req, res) => {
-  res.status(200).json({ result: `${firstCharacter(req.params.string)}` });
+  if (!req.query.length) {
+    res.status(200).json({ result: `${firstCharacter(req.params.string)}` });
+  } else {
+    res.status(200).json({ result: `${firstCharacters(req.params.string, req.query.length)}` });
+  }
 });
 
 module.exports = app;
