@@ -57,12 +57,22 @@ describe('/strings', () => {
   });
 
   describe('GET /first-characters/{string}', () => {
-    xit('returns the first character of the string when there is no query string', done => {
+    it('returns the first character of the string when there is no query string', done => {
       request(app)
         .get('/strings/first-characters/hello')
         .then(res => {
           expect(res.status).toEqual(200);
           expect(res.body).toEqual({ result: 'h' });
+          done();
+        });
+    });
+
+    it('returns the first character of the string when there is no query string', done => {
+      request(app)
+        .get('/strings/first-characters/turtle')
+        .then(res => {
+          expect(res.status).toEqual(200);
+          expect(res.body).toEqual({ result: 't' });
           done();
         });
     });

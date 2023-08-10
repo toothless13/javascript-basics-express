@@ -24,4 +24,8 @@ app.get('/strings/lower/:string', (req, res) => {
   res.status(200).json({ result: `${lowercase(req.params.string)}` });
 });
 
+app.get('/strings/first-characters/:string', (req, res) => {
+  res.status(200).json({ result: `${firstCharacter(req.params.string)}` });
+});
+
 module.exports = app;
