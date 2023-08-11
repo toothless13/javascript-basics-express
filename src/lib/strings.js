@@ -1,4 +1,4 @@
-const sayHello = (string) => {
+const sayHello = string => {
   return `Hello, ${string}!`;
 };
 
@@ -28,5 +28,5 @@ module.exports = {
   lowercase,
   countCharacters,
   firstCharacter,
-  firstCharacters
+  firstCharacters,
 };

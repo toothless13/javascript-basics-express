@@ -15,22 +15,23 @@ const divide = (a, b) => {
 };
 
 const power = (a, b) => {
+  // eslint-disable-next-line no-restricted-properties
   return Math.pow(a, b);
 };
 
-const round = (a) => {
+const round = a => {
   return Math.round(a);
 };
 
-const roundUp = (a) => {
+const roundUp = a => {
   return Math.ceil(a);
 };
 
-const roundDown = (a) => {
+const roundDown = a => {
   return Math.floor(a);
 };
 
-const absolute = (a) => {
+const absolute = a => {
   return Math.abs(a);
 };
 
@@ -57,5 +58,5 @@ module.exports = {
   roundDown,
   absolute,
   quotient,
-  remainder
-}
+  remainder,
+};
