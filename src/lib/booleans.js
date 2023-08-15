@@ -1,26 +1,28 @@
+/* eslint-disable prettier/prettier */
+/* eslint-disable eqeqeq */
+/* eslint-disable no-unneeded-ternary */
 const negate = a => {
   return !a;
 };
 
 const both = (a, b) => {
-  if(a && b) {
+  if (a && b) {
     return true;
-  } else {
-    return false;
   }
+  return false;
 };
 
 const either = (a, b) => {
-  return a || b ? true : false;
+  return !!(a || b);
 };
 
 const none = (a, b) => {
-  return !a && !b ? true : false;
+  return !!(!a && !b);
 };
 
 const one = (a, b) => {
-  return ((a && !b) || (!a && b)) ? true : false;
-}
+  return (a && !b) || (!a && b) ? true : false;
+};
 
 const truthiness = a => {
   return a ? true : false;
@@ -49,9 +51,9 @@ const isEven = a => {
 const isSquare = a => {
   if (a === 0 || (a % (Math.sqrt(a)) === 0)) {
     return true;
-  } else {
+  } 
     return false;
-  }
+  
 };
 
 const startsWith = (char, string) => {
@@ -62,9 +64,9 @@ const containsVowels = string => {
   const lcString = string.toLowerCase();
   if (lcString.includes('a') || lcString.includes('e') || lcString.includes('i') || lcString.includes('o') || lcString.includes('u')) {
     return true;
-  } else {
+  } 
     return false;
-  }
+  
 };
 
 const isLowerCase = string => {

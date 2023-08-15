@@ -8,19 +8,25 @@ const {
   firstCharacters,
 } = require('./lib/strings');
 
+const { add, subtract, multiply, divide, remainder } = require('./lib/numbers');
+
 const {
-  add,
-  subtract,
-  multiply,
-  divide,
-  power,
-  round,
-  roundUp,
-  roundDown,
-  absolute,
-  quotient,
-  remainder,
-} = require('./lib/numbers');
+  negate,
+  both,
+  either,
+  none,
+  one,
+  truthiness,
+  isEqual,
+  isGreaterThan,
+  isLessThanOrEqualTo,
+  isOdd,
+  isEven,
+  isSquare,
+  startsWith,
+  containsVowels,
+  isLowerCase,
+} = require('./lib/booleans');
 
 const app = express();
 
@@ -109,6 +115,10 @@ app.post('/numbers/remainder', (req, res) => {
     res.status(400).send({ error: 'Unable to divide by 0.' });
   }
   res.status(200).send({ result: remainder(req.body.a, req.body.b) });
+});
+
+app.post('/booleans/negate', (req, res) => {
+  res.status(200).send({ result: negate(req.body.value) });
 });
 
 module.exports = app;
