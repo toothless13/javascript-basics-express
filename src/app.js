@@ -53,8 +53,8 @@ app.get('/strings/first-characters/:string', (req, res) => {
 });
 
 app.get('/numbers/add/:num1/and/:num2', (req, res) => {
-  const num1 = parseInt(req.params.num1);
-  const num2 = parseInt(req.params.num2);
+  const num1 = parseInt(req.params.num1, 10);
+  const num2 = parseInt(req.params.num2, 10);
   if (Number.isNaN(num1) || Number.isNaN(num2)) {
     res.status(400).send({ error: 'Parameters must be valid numbers.' });
   } else {
@@ -63,8 +63,8 @@ app.get('/numbers/add/:num1/and/:num2', (req, res) => {
 });
 
 app.get('/numbers/subtract/:num1/from/:num2', (req, res) => {
-  const num1 = parseInt(req.params.num1);
-  const num2 = parseInt(req.params.num2);
+  const num1 = parseInt(req.params.num1, 10);
+  const num2 = parseInt(req.params.num2, 10);
   if (Number.isNaN(num1) || Number.isNaN(num2)) {
     res.status(400).send({ error: 'Parameters must be valid numbers.' });
   } else {
@@ -76,6 +76,7 @@ app.post('/numbers/multiply', (req, res) => {
   if (!req.body.a || !req.body.b) {
     res.status(400).send({ error: 'Parameters "a" and "b" are required.' });
   }
+  // eslint-disable-next-line no-restricted-globals
   if (isNaN(req.body.a) || isNaN(req.body.b)) {
     res.status(400).send({ error: 'Parameters "a" and "b" must be valid numbers.' });
   }
@@ -84,6 +85,7 @@ app.post('/numbers/multiply', (req, res) => {
 
 app.post('/numbers/divide', (req, res) => {
   if (req.body.a != null && req.body.b != null) {
+    // eslint-disable-next-line no-restricted-globals
     if (isNaN(req.body.a) || isNaN(req.body.b)) {
       res.status(400).send({ error: 'Parameters "a" and "b" must be valid numbers.' });
     }
@@ -94,6 +96,19 @@ app.post('/numbers/divide', (req, res) => {
   } else {
     res.status(400).send({ error: 'Parameters "a" and "b" are required.' });
   }
+});
+
+app.post('/numbers/remainder', (req, res) => {
+  if (req.body.a == null || req.body.b == null) {
+    res.status(400).send({ error: 'Parameters "a" and "b" are required.' });
+  }
+  if (Number.isNaN(parseInt(req.body.a, 10)) || Number.isNaN(parseInt(req.body.b, 10))) {
+    res.status(400).send({ error: 'Parameters must be valid numbers.' });
+  }
+  if (req.body.b === 0) {
+    res.status(400).send({ error: 'Unable to divide by 0.' });
+  }
+  res.status(200).send({ result: remainder(req.body.a, req.body.b) });
 });
 
 module.exports = app;
