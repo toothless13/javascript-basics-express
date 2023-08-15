@@ -82,4 +82,18 @@ app.post('/numbers/multiply', (req, res) => {
   res.status(200).send({ result: multiply(req.body.a, req.body.b) });
 });
 
+app.post('/numbers/divide', (req, res) => {
+  if (req.body.a != null && req.body.b != null) {
+    if (isNaN(req.body.a) || isNaN(req.body.b)) {
+      res.status(400).send({ error: 'Parameters "a" and "b" must be valid numbers.' });
+    }
+    if (req.body.b === 0) {
+      res.status(400).send({ error: 'Unable to divide by 0.' });
+    }
+    res.status(200).send({ result: divide(req.body.a, req.body.b) });
+  } else {
+    res.status(400).send({ error: 'Parameters "a" and "b" are required.' });
+  }
+});
+
 module.exports = app;
