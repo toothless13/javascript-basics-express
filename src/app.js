@@ -72,4 +72,14 @@ app.get('/numbers/subtract/:num1/from/:num2', (req, res) => {
   }
 });
 
+app.post('/numbers/multiply', (req, res) => {
+  if (!req.body.a || !req.body.b) {
+    res.status(400).send({ error: 'Parameters "a" and "b" are required.' });
+  }
+  if (isNaN(req.body.a) || isNaN(req.body.b)) {
+    res.status(400).send({ error: 'Parameters "a" and "b" must be valid numbers.' });
+  }
+  res.status(200).send({ result: multiply(req.body.a, req.body.b) });
+});
+
 module.exports = app;
