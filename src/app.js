@@ -125,4 +125,12 @@ app.post('/booleans/truthiness', (req, res) => {
   res.status(200).send({ result: truthiness(req.body.value) });
 });
 
+app.get('/booleans/is-odd/:value', (req, res) => {
+  if (!isNaN(req.params.value)) {
+    res.status(200).send({ result: isOdd(req.params.value) });
+  } else {
+    res.status(400).send({ error: 'Parameter must be a number.' });
+  }
+});
+
 module.exports = app;
