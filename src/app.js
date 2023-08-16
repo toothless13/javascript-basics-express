@@ -126,10 +126,10 @@ app.post('/booleans/truthiness', (req, res) => {
 });
 
 app.get('/booleans/is-odd/:value', (req, res) => {
-  if (!isNaN(req.params.value)) {
-    res.status(200).send({ result: isOdd(req.params.value) });
-  } else {
+  if (Number.isNaN(parseInt(req.params.value, 10))) {
     res.status(400).send({ error: 'Parameter must be a number.' });
+  } else {
+    res.status(200).send({ result: isOdd(req.params.value) });
   }
 });
 
