@@ -15,7 +15,7 @@ const { negate, truthiness, isOdd, startsWith } = require('./lib/booleans');
 const {
   getNthElement,
   arrayToCSVString,
-  addToArray,
+  addToArray2,
   elementsStartingWithAVowel,
   removeNthElement,
 } = require('./lib/arrays');
@@ -136,6 +136,10 @@ app.post('/arrays/element-at-index/:index', (req, res) => {
 
 app.post('/arrays/to-string', (req, res) => {
   res.status(200).send({ result: arrayToCSVString(req.body.array) });
+});
+
+app.post('/arrays/append', (req, res) => {
+  res.status(200).send({ result: addToArray2(req.body.value, req.body.array) });
 });
 
 module.exports = app;
