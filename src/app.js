@@ -12,20 +12,9 @@ const { add, subtract, multiply, divide, remainder } = require('./lib/numbers');
 
 const {
   negate,
-  both,
-  either,
-  none,
-  one,
   truthiness,
-  isEqual,
-  isGreaterThan,
-  isLessThanOrEqualTo,
   isOdd,
-  isEven,
-  isSquare,
-  startsWith,
-  containsVowels,
-  isLowerCase,
+  startsWith,,
 } = require('./lib/booleans');
 
 const app = express();
@@ -33,8 +22,6 @@ const app = express();
 app.use(express.json());
 
 app.get('/strings/hello/:string', (req, res) => {
-  // res.status(200);
-  // res.send({ result: 'Hello, world!' });
   res.status(200).json({ result: `${sayHello(req.params.string)}` });
 });
 
