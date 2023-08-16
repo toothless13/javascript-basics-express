@@ -121,4 +121,8 @@ app.post('/booleans/negate', (req, res) => {
   res.status(200).send({ result: negate(req.body.value) });
 });
 
+app.post('/booleans/truthiness', (req, res) => {
+  res.status(200).send({ result: truthiness(req.body.value) });
+});
+
 module.exports = app;
